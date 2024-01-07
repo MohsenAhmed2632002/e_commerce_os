@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+
+// ignore_for_file: unnecessary_null_comparison
 
 class UserModel {
   late String name;

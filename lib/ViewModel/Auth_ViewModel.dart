@@ -2,7 +2,6 @@
 
 import 'package:e_commerce_os/Models/UserModel.dart';
 import 'package:e_commerce_os/Screens/Home_Viwe.dart';
-import 'package:e_commerce_os/Screens/LoginScreen.dart';
 import 'package:e_commerce_os/Services/FireStore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,24 +14,10 @@ class AuthViewModel extends GetxController {
   late String email;
   late String password;
   late String name;
-//   Rx<User> _user = User as Rx<User>;
-//  String? get user=>_user.value.email;
+
   Rx<User?> _user = Rx<User?>(null);
   String? get user => _user.value?.email;
-  // @override
-  // void onInit() {
-  //   _user.bindStream(_auth.authStateChanges().cast<User>());
-  //   Future.delayed(
-  //       Duration(
-  //         seconds: 1,
-  //       ), () {
-  //     return Obx(() {
-  //       return (Get.find<AuthViewModel>().user != null)
-  //           ? HomeView()
-  //           : LoginViwe();
-  //     });
-  //   });
-  // }
+  
 
   void googleSignInFun() async {
     try {

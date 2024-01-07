@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_os/Models/CategoryModel.dart';
 import 'package:e_commerce_os/Models/ProdectModel.dart';
 import 'package:e_commerce_os/core/utils/service.dart';
@@ -21,9 +20,7 @@ class HomeViewModel extends GetxController {
             value[i].data() as Map<String, dynamic>,
           ),
         );
-        print(_categoryModel.length);
       }
-      print("object");
       update();
     });
   }
@@ -36,9 +33,8 @@ class HomeViewModel extends GetxController {
             value[i].data() as Map<String, dynamic>,
           ),
         );
-        print(_productModel.length);
       }
-      print("object");
+
       update();
     });
   }
