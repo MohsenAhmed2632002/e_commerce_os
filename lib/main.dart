@@ -1,7 +1,7 @@
 import 'package:e_commerce_os/core/Constans/theme.dart';
 import 'package:e_commerce_os/core/utils/binding.dart';
 import 'package:e_commerce_os/firebase_options.dart';
-import 'package:e_commerce_os/ViewModel/ControllerView.dart';
+import 'package:e_commerce_os/Screens/ControllerView.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
