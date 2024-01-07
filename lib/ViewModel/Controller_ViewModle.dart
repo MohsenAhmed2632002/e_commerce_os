@@ -4,16 +4,16 @@ import 'package:e_commerce_os/Screens/PersonView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-class HomeViewModel extends GetxController {
+class ControllerViewModel extends GetxController {
   int _navValue = 0;
   get navValue => _navValue;
-  Widget _currentScreen = HomeView();
+  Widget _currentScreen = HomeView() ;
   get currentScreen => _currentScreen;
   void getNavValue(int selectIndex) {
     _navValue = selectIndex;
     switch (selectIndex) {
       case 0:
-        _currentScreen = HomeView();
+        _currentScreen = HomeView() ;
         break;
       case 1:
         _currentScreen = CartView();

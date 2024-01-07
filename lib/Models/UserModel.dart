@@ -32,10 +32,4 @@ class UserModel {
       "pic": pic,
     };
   }
-
-  // UserModel.fromJson(Map<String, dynamic> map) {
-  //   if (map == null) {
-  //     return;
-  //   } else {}
-  // }
 }

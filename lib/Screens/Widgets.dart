@@ -3,7 +3,7 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:e_commerce_os/Screens/Cart_View.dart';
 import 'package:e_commerce_os/Screens/Home_Viwe.dart';
 import 'package:e_commerce_os/Screens/PersonView.dart';
-import 'package:e_commerce_os/ViewModel/Home_ViewModle.dart';
+import 'package:e_commerce_os/ViewModel/Controller_ViewModle.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
 import 'package:e_commerce_os/core/Constans/image.dart';
 import 'package:e_commerce_os/core/color_schemes.g.dart';
@@ -11,63 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-
-final List<String> CatigoriesList = [
-  ImageAssets.icon_Mens_Shoe,
-  ImageAssets.icon_Womens_Shoe,
-  ImageAssets.icon_Devices,
-  ImageAssets.icon_Gadgets,
-  ImageAssets.icon_Gaming,
-];
-
-class CategoriesContainer extends StatelessWidget {
-  const CategoriesContainer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.sizeOf(context).height * .2,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: CatigoriesList.length,
-        itemBuilder: (context, index) {
-          return Container(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * .2,
-                    height: MediaQuery.sizeOf(context).height * .1,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(
-                          CatigoriesList[index],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "${CatigoriesList[index].substring(
-                      18,
-                      26,
-                    )}",
-                    style: getMediumTextStyle(lightColorScheme.primary),
-                  ),
-                ]),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(
-            width: 20,
-          );
-        },
-      ),
-    );
-  }
-}
 
 class ContainerOfAllProductPage extends StatelessWidget {
   const ContainerOfAllProductPage({
@@ -212,8 +155,8 @@ class GetBuilderCurvedNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeViewModel>(
-      init: HomeViewModel(),
+    return GetBuilder<ControllerViewModel>(
+      init: ControllerViewModel(),
       builder: (controller) {
         return CurvedNavigationBar(
           animationDuration: Duration(seconds: 1),
