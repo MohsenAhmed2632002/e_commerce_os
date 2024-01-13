@@ -5,7 +5,7 @@ import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetWidget<HomeViewModel> {
   HomeView({super.key});
   @override
   Widget build(BuildContext context) {
@@ -47,45 +47,50 @@ class HomeView extends StatelessWidget {
                   style: getBoldTextStyle(Colors.black),
                 ),
               ),
-              GetBuilder<HomeViewModel>(builder: (controller) {
-                return Container(
-                  height: MediaQuery.sizeOf(context).height * .2,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.categoryModel.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * .2,
-                                height: MediaQuery.sizeOf(context).height * .1,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                      controller.categoryModel[index].image,
+              GetBuilder<HomeViewModel>(
+                  init: Get.put(HomeViewModel()),
+                  builder: (controller) {
+                    return Container(
+                      height: MediaQuery.sizeOf(context).height * .2,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.categoryModel.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * .2,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * .1,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          controller.categoryModel[index].image,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                              Text(
-                                "${controller.categoryModel[index].name}",
-                                style: getMediumTextStyle(
-                                    lightColorScheme.primary),
-                              ),
-                            ]),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return SizedBox(
-                        width: 20,
-                      );
-                    },
-                  ),
-                );
-              }),
+                                  Text(
+                                    "${controller.categoryModel[index].name}",
+                                    style: getMediumTextStyle(
+                                        lightColorScheme.primary),
+                                  ),
+                                ]),
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return SizedBox(
+                            width: 20,
+                          );
+                        },
+                      ),
+                    );
+                  }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -103,11 +108,8 @@ class HomeView extends StatelessWidget {
                 height: MediaQuery.sizeOf(context).height * .08,
               ),
               GetBuilder<HomeViewModel>(
-                  init: HomeViewModel(),
+                  init: Get.put(HomeViewModel()),
                   builder: (controller) {
-                    init:
-                    Get.find();
-
                     return Container(
                       height: MediaQuery.sizeOf(context).height * .25,
                       child: Container(

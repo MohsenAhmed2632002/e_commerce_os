@@ -1,27 +1,73 @@
-// class CartProductModel {
-//   late String name, image,price,quan;
-//   CartProductModel(
-//       {required this.name,
-//       required this.image,
-//       required this.quan,
-//       required this.price,
-// });
-//   CartProductModel.fromJson(Map<String, dynamic> map) {
-//     if (map == null) {
-//       return;
-//     } else {
-//       name = map["name"];
-//       image = map["image"];
-//       quan = map["quan"];
-//       price = map["price"];
-//     }
-//   }
-//   toJson() {
-//     return {
-//       "name": name,
-//       "image": image,
-//       "price": price,
-//       "quan": quan,
-//     };
-//   }
+import 'package:hive/hive.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'CartProdectModel.g.dart';
+
+@HiveType(typeId: 0)
+@JsonSerializable(createToJson: true)
+class CartProductModel {
+  @HiveField(0)
+  late String name;
+  @HiveField(1)
+  late String image;
+  @HiveField(2)
+  late String size;
+  @HiveField(3)
+  late String color;
+  @HiveField(4)
+  late String details;
+  @HiveField(5)
+  late int price;
+  @HiveField(6)
+  late int quan;
+  CartProductModel({
+    required this.name,
+    required this.image,
+    required this.color,
+    required this.size,
+    required this.price,
+    required this.details,
+    required this.quan,
+  });
+
+  factory CartProductModel.fromJson(Map<String, dynamic> json) =>
+      _$CartProductModelFromJson(json);
+
+
+
+  @override
+  List<Object?> get props => [
+        name,
+        image,
+        color,
+        size,
+        price,
+        details,
+        quan,
+      ];
+}
+  // CartProductModel.fromJson(Map<String, dynamic> map) {
+  //   if (map == null) {
+  //     return;
+  //   } else {
+  //     name = map["name"];
+  //     image = map["image"];
+  //     color = map["color"];
+  //     size = map["size"];
+  //     image = map["image"];
+  //     details = map["details"];
+  //     price = map["price"];
+  //     quan = map["quan"] ?? 0;
+  //   }
+  // }
+  // toJson() {
+  //   return {
+  //     "name": name,
+  //     "image": image,
+  //     "color": color,
+  //     "size": size,
+  //     "price": price,
+  //     "details": details,
+  //     "quan": quan,
+  //   };
+  // }
 // }

@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:e_commerce_os/Models/CartProdectModel.dart';
 import 'package:e_commerce_os/Models/ProdectModel.dart';
 import 'package:e_commerce_os/ViewModel/DBViewModel.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
@@ -7,7 +8,7 @@ import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Daetilas extends StatelessWidget {
+class Daetilas extends GetWidget<CashData> {
   ProductModel model;
   Daetilas({required this.model});
 
@@ -18,7 +19,7 @@ class Daetilas extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height * .85,
+              height: MediaQuery.sizeOf(context).height * .8,
               width: MediaQuery.sizeOf(context).width,
               child: SingleChildScrollView(
                 child: Column(
@@ -152,6 +153,7 @@ class Daetilas extends StatelessWidget {
                         ],
                       ),
                       GetBuilder<CashData>(
+                        init: Get.put(CashData()),
                         builder: (controller) => TextButton.icon(
                           style: ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
@@ -159,7 +161,16 @@ class Daetilas extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            controller.SetCartList(model.name);
+                            controller.saveDataLocal(
+                              CartProductModel(
+                                  name: model.name,
+                                  image: model.image,
+                                  color: model.color,
+                                  size: model.size,
+                                  price: model.price,
+                                  details: model.details,
+                                  quan: 1) ,
+                            );
                           },
                           icon: Icon(Icons.attach_money),
                           label: Text("BUY"),

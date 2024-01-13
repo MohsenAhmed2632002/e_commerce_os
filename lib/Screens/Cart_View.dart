@@ -1,31 +1,30 @@
 import 'package:e_commerce_os/ViewModel/DBViewModel.dart';
+import 'package:e_commerce_os/core/Constans/Font.dart';
 import 'package:e_commerce_os/core/Constans/image.dart';
 import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CartView extends StatelessWidget {
+class CartView extends GetWidget<CashData> {
   const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                height: MediaQuery.sizeOf(context).height * .83,
-                width: MediaQuery.sizeOf(context).width,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
-                ),
-                child: GetBuilder<CashData>(
-                  
-                  builder: (controller) {
-                          init: Get.find();
-
-               return     ListView.separated(
+        child: GetBuilder<CashData>(
+          init: Get.put(CashData()),
+          builder: (controller) {
+            return Container(
+              child: Column(
+                children: [
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * .8,
+                    width: MediaQuery.sizeOf(context).width,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: ListView.separated(
                       itemBuilder: (context, index) {
                         return Container(
                           child: Row(
@@ -37,8 +36,8 @@ class CartView extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: AssetImage(
-                                      "${ImageAssets.repeatGrid1}",
+                                    image: NetworkImage(
+                                      "${controller.getCartList()![index].image}",
                                     ),
                                   ),
                                 ),
@@ -48,7 +47,10 @@ class CartView extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text("${controller.cartList[index]}"),
+                                    Text(
+                                      "${controller.getCartList()![index].name}",
+                                      style: getBoldTextStyle(Colors.black),
+                                    ),
                                     Container(
                                       child: Row(
                                         mainAxisAlignment:
@@ -66,7 +68,7 @@ class CartView extends StatelessWidget {
                                           ElevatedButton(
                                             onPressed: () {},
                                             child: Text(
-                                              "Data",
+                                              "${controller.getCartList()![index].quan}",
                                             ),
                                           ),
                                           IconButton(
@@ -90,31 +92,31 @@ class CartView extends StatelessWidget {
                           height: 10,
                         );
                       },
-                      itemCount: controller.cartList.length,
-                    );
-                  },
-                ),
-              ),
-              Container(
-                height: MediaQuery.sizeOf(context).height * .1,
-                width: MediaQuery.sizeOf(context).width,
-                decoration: BoxDecoration(color: lightColorScheme.primary),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      itemCount: controller.getCartList()!.length,
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * .1,
+                    width: MediaQuery.sizeOf(context).width,
+                    decoration: BoxDecoration(color: lightColorScheme.primary),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text("data"),
-                        Text("data"),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("data"),
+                            Text("data"),
+                          ],
+                        ),
+                        ElevatedButton(onPressed: () {}, child: Text("Data"))
                       ],
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text("Data"))
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
