@@ -37,7 +37,7 @@ class CartView extends GetWidget<CashData> {
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: NetworkImage(
-                                      "${controller.getCartList()![index].image}",
+                                      "${controller.getCartList()[index].image}",
                                     ),
                                   ),
                                 ),
