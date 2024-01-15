@@ -4,6 +4,7 @@ import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+// ignore: must_be_immutable
 class RegisterView extends GetWidget<AuthViewModel> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   @override

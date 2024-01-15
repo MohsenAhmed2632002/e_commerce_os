@@ -9,6 +9,7 @@ class ProductModel {
       required this.price,
       required this.details});
   ProductModel.fromJson(Map<String, dynamic> map) {
+    // ignore: unnecessary_null_comparison
     if (map == null) {
       return;
     } else {

@@ -17,12 +17,14 @@ class CartView extends GetWidget<CashData> {
           builder: (controller) {
             return Container(
               child: Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    height: MediaQuery.sizeOf(context).height * .8,
+                    height: MediaQuery.sizeOf(context).height * .83,
                     width: MediaQuery.sizeOf(context).width,
                     padding: EdgeInsets.symmetric(
-                      horizontal: 15,
+                      vertical: 10,
+                      horizontal: 10,
                     ),
                     child: ListView.separated(
                       itemBuilder: (context, index) {
@@ -37,7 +39,7 @@ class CartView extends GetWidget<CashData> {
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: NetworkImage(
-                                      "${controller.getCartList()[index].image}",
+                                      "${controller.getCartList()?[index].image}",
                                     ),
                                   ),
                                 ),
@@ -49,7 +51,7 @@ class CartView extends GetWidget<CashData> {
                                   children: [
                                     Text(
                                       "${controller.getCartList()![index].name}",
-                                      style: getBoldTextStyle(Colors.black),
+                                      style: getMediumTextStyle(Colors.black),
                                     ),
                                     Container(
                                       child: Row(
@@ -98,7 +100,8 @@ class CartView extends GetWidget<CashData> {
                   Container(
                     height: MediaQuery.sizeOf(context).height * .1,
                     width: MediaQuery.sizeOf(context).width,
-                    decoration: BoxDecoration(color: lightColorScheme.primary),
+                    decoration:
+                        BoxDecoration(color: lightColorScheme.onPrimary),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

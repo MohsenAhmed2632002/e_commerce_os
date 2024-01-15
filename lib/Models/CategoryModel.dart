@@ -5,6 +5,7 @@ class CategoryModel {
     required this.image,
   });
   CategoryModel.fromJson(Map<String, dynamic> map) {
+    // ignore: unnecessary_null_comparison
     if (map == null) {
       return;
     } else {

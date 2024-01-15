@@ -32,9 +32,9 @@ class CartProductModel {
   factory CartProductModel.fromJson(Map<String, dynamic> json) =>
       _$CartProductModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$CartProductModelToJson(this);
 
 
-  @override
   List<Object?> get props => [
         name,
         image,

@@ -6,6 +6,7 @@ import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class LoginViwe extends GetWidget<AuthViewModel> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   @override

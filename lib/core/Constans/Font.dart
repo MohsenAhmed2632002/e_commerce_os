@@ -48,7 +48,7 @@ TextStyle getRegulerTextStyle(
 
 TextStyle getMediumTextStyle(
   Color color, {
-  double fontSize = Fontsize.s14,
+  double fontSize = Fontsize.s18,
 }) {
   return _getTextStyle(color,
       fontsize: fontSize, fontWeight: fontWeightManager.medium);
