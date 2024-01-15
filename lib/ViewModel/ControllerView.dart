@@ -12,6 +12,7 @@ class ControllerView extends GetWidget<AuthViewModel> {
       return (Get.find<AuthViewModel>().user != null)
           ? LoginViwe()
           : GetBuilder<ControllerViewModel>(
+              init: Get.put(ControllerViewModel()),
               builder: (controller) {
                 return Scaffold(
                   body: controller.currentScreen,

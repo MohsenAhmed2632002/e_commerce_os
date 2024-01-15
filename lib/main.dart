@@ -11,11 +11,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put(CashData());
-  await Hive.initFlutter();
+     await Hive.initFlutter();
   Hive.registerAdapter(CartProductModelAdapter());
 
-  await Hive.openBox<List<CartProductModel>>("CartBox");
+    await Hive.openBox<List<CartProductModel>>("CartBox");
+
+  Get.put(CashData());
+
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

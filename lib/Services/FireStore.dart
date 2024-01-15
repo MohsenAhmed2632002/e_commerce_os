@@ -9,4 +9,8 @@ class FireSoterUser {
           userModel.toJson(),
         );
   }
+
+  Future<DocumentSnapshot> getCurrentUser(String uid)async {
+    return await collectionUser.doc(uid).get();
+  }
 }

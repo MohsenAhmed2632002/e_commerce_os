@@ -3,12 +3,16 @@
 import 'package:e_commerce_os/Models/UserModel.dart';
 import 'package:e_commerce_os/Screens/Home_Viwe.dart';
 import 'package:e_commerce_os/Services/FireStore.dart';
+import 'package:e_commerce_os/Services/LocalUserData.dart';
+import 'package:e_commerce_os/ViewModel/ControllerView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthViewModel extends GetxController {
+  final LocalUserData localUserData = Get.find();
+
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
   FirebaseAuth _auth = FirebaseAuth.instance;
   late String email;
@@ -17,7 +21,6 @@ class AuthViewModel extends GetxController {
 
   Rx<User?> _user = Rx<User?>(null);
   String? get user => _user.value?.email;
-  
 
   void googleSignInFun() async {
     try {
@@ -30,16 +33,9 @@ class AuthViewModel extends GetxController {
         idToken: googleSignInAuthentication.idToken,
       );
       await _auth.signInWithCredential(authCredential).then((myUser) async {
-        await FireSoterUser().addUserToFireStore(
-          UserModel(
-            name: name,
-            email: myUser.user!.email!,
-            userId: myUser.user!.uid,
-            pic: "",
-          ),
-        );
+        await saveUser(myUser);
       });
-      Get.offAll(HomeView());
+      Get.offAll(ControllerView());
     } catch (e) {
       Get.showSnackbar(GetSnackBar(
         title: e.toString(),
@@ -51,7 +47,12 @@ class AuthViewModel extends GetxController {
 
   void signInWithEmailAndPassword() async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) async {
+        await FireSoterUser().getCurrentUser(value.user!.uid).then((value) =>
+            setUser(UserModel.fromJson(value.data() as Map<String, dynamic>)));
+      });
       Get.showSnackbar(GetSnackBar(
         backgroundColor: Colors.green,
         duration: Duration(seconds: 2),
@@ -59,7 +60,7 @@ class AuthViewModel extends GetxController {
         title: email.toString(),
         message: password.toString(),
       ));
-      Get.offAll(HomeView());
+      Get.offAll(ControllerView());
     } catch (e) {
       Get.showSnackbar(GetSnackBar(
         backgroundColor: Colors.red,
@@ -77,14 +78,7 @@ class AuthViewModel extends GetxController {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((myUser) async {
-        await FireSoterUser().addUserToFireStore(
-          UserModel(
-            name: name,
-            email: myUser.user!.email!,
-            userId: myUser.user!.uid,
-            pic: "",
-          ),
-        );
+        await saveUser(myUser);
       });
       Get.showSnackbar(GetSnackBar(
         backgroundColor: Colors.green,
@@ -93,7 +87,7 @@ class AuthViewModel extends GetxController {
         title: email.toString(),
         message: password.toString(),
       ));
-      Get.offAll(HomeView());
+      Get.offAll(ControllerView());
     } catch (e) {
       Get.showSnackbar(GetSnackBar(
         backgroundColor: Colors.red,
@@ -104,5 +98,20 @@ class AuthViewModel extends GetxController {
       ));
       print(e);
     }
+  }
+
+  Future<void> saveUser(UserCredential myUser) async {
+    UserModel userModel = UserModel(
+      name: name,
+      email: myUser.user!.email!,
+      userId: myUser.user!.uid,
+      pic: "",
+    );
+    await FireSoterUser().addUserToFireStore(userModel);
+    setUser(userModel);
+  }
+
+  Future setUser(UserModel userModel) async {
+    await localUserData.setuserData(userModel);
   }
 }
