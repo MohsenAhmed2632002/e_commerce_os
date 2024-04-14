@@ -1,37 +1,28 @@
+import 'package:e_commerce_os/core/Constans/Colors.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
-import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(
-    colorScheme: lightColorScheme,
     useMaterial3: true,
 
+    //////////////////
 
-    ////////////////
     cardTheme: CardTheme(
       elevation: Fontsize.s8,
     ),
 /////////////////
     appBarTheme: AppBarTheme(
-      titleTextStyle: getBoldTextStyle(lightColorScheme.onPrimary),
-      elevation: Fontsize.s12,
+      color: ColorManager.primary,
+      // elevation: Fontsize.s22,
       centerTitle: true,
-      backgroundColor: lightColorScheme.primary,
-    ),
-    ////////////////////
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        textStyle: getRegulerTextStyle(
-          Colors.white,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            12,
-          ),
-        ),
+      iconTheme: IconThemeData(color: Colors.black),
+      titleTextStyle: getBoldTextStyle(
+        Colors.black,
       ),
     ),
+    ////////////////////
+
     ////////////////////
     textTheme: TextTheme(
         titleMedium: getMediumTextStyle(
@@ -72,7 +63,7 @@ ThemeData getAppTheme() {
         ),
       ),
     ),
-    // brightness: Brightness.light,
+    brightness: Brightness.light,
     fontFamily: FontConstants.fontFamily,
     //////////////////
   );

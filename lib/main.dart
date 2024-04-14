@@ -11,13 +11,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-     await Hive.initFlutter();
+  await Hive.initFlutter();
   Hive.registerAdapter(CartProductModelAdapter());
 
-    await Hive.openBox<List<CartProductModel>>("CartBox");
+  await Hive.openBox<List<CartProductModel>>("CartBox");
 
   Get.put(CashData());
-
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -39,3 +38,12 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+//TODO:
+//اللون اللي زي الثيم دا  
+// جوجججل واللي منها    
+// صفحة الخروج و البيانات 
+// المسح ف صفحة الصندوق 
+// 
+// 
+// 
+// 

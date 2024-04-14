@@ -1,7 +1,6 @@
 // ignore_for_file: unused_field
 
 import 'package:e_commerce_os/Models/UserModel.dart';
-import 'package:e_commerce_os/Screens/Home_Viwe.dart';
 import 'package:e_commerce_os/Services/FireStore.dart';
 import 'package:e_commerce_os/Services/LocalUserData.dart';
 import 'package:e_commerce_os/ViewModel/ControllerView.dart';
@@ -13,7 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthViewModel extends GetxController {
   final LocalUserData localUserData = Get.find();
 
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
+  GoogleSignIn googleSignIn = GoogleSignIn(scopes: ["email"]);
   FirebaseAuth _auth = FirebaseAuth.instance;
   late String email;
   late String password;
@@ -21,11 +20,16 @@ class AuthViewModel extends GetxController {
 
   Rx<User?> _user = Rx<User?>(null);
   String? get user => _user.value?.email;
+  @override
+  void onInit() {
+    super.onInit();
+    _user.bindStream(_auth.authStateChanges());
+  }
 
   void googleSignInFun() async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
+          await googleSignIn.signIn();
       GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount!.authentication;
       final AuthCredential authCredential = GoogleAuthProvider.credential(

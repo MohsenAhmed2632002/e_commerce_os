@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:e_commerce_os/Models/UserModel.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

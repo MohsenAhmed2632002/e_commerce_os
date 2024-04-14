@@ -1,8 +1,7 @@
 import 'package:e_commerce_os/ViewModel/Auth_ViewModel.dart';
 import 'package:e_commerce_os/Screens/RegisterView.dart';
+import 'package:e_commerce_os/Widgets.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
-import 'package:e_commerce_os/core/Constans/image.dart';
-import 'package:e_commerce_os/core/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,25 +12,16 @@ class LoginViwe extends GetWidget<AuthViewModel> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: lightColorScheme.onPrimary,
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 30,
-          ),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 30,
+            ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1,
-                      color: lightColorScheme.primary,
-                    ),
-                    color: lightColorScheme.onPrimary.withOpacity(.7),
-                  ),
-                  height: MediaQuery.sizeOf(context).height * .6,
+                  height: MediaQuery.sizeOf(context).height * .7,
                   width: MediaQuery.sizeOf(context).width,
                   padding: EdgeInsets.all(15),
                   child: Form(
@@ -39,13 +29,19 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Container(
+                          child: Image.asset(
+                              height: MediaQuery.sizeOf(context).height * .2,
+                              fit: BoxFit.fill,
+                              "assets/image/wallpaper2.png"),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               "welecome",
                               style:
-                                  getBoldTextStyle(Colors.black, fontSize: 24),
+                                  getBoldTextStyle(Colors.black, fontSize: 30),
                             ),
                             InkWell(
                               onTap: () {
@@ -53,23 +49,19 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                               },
                               child: Text(
                                 "Sign Up",
-                                style: getBoldTextStyle(
-                                    lightColorScheme.primary,
-                                    fontSize: 18),
+                                style: getBoldTextStyle(Colors.black,
+                                    fontSize: 16),
                               ),
                             )
                           ],
                         ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Sign In To Cotinue",
-                                style: getRegulerTextStyle(Colors.grey),
-                              ),
-                            ]),
-                        SizedBox(
-                          height: 50,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Sign In To Cotinue",
+                            style: getRegulerTextStyle(
+                                const Color.fromARGB(255, 123, 122, 122)),
+                          ),
                         ),
                         TextFormField(
                           validator: (value) {
@@ -81,11 +73,13 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                             controller.email = value;
                           },
                           decoration: InputDecoration(
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromARGB(255, 255, 234, 0),
+                              ),
+                            ),
                             label: Text("E-mail"),
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
                         ),
                         TextFormField(
                           validator: (value) {
@@ -97,6 +91,11 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                             controller.password = value;
                           },
                           decoration: InputDecoration(
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromARGB(255, 255, 234, 0),
+                              ),
+                            ),
                             label: Text("PassWord"),
                           ),
                         ),
@@ -104,85 +103,32 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: () {},
-                            child: Text("Forget The Pass?"),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            minimumSize: MaterialStatePropertyAll<Size>(
-                              Size(
-                                MediaQuery.sizeOf(context).width,
-                                MediaQuery.sizeOf(context).height * .09,
-                              ),
-                            ),
-                            backgroundColor: MaterialStatePropertyAll(
-                              lightColorScheme.primary,
+                            child: Text(
+                              "Forget The Pass?",
+                              style: getRegulerTextStyle(Colors.black87),
                             ),
                           ),
-                          onPressed: () {
-                            formkey.currentState!.save();
-                            if (formkey.currentState!.validate()) {
-                              try {
-                                controller.signInWithEmailAndPassword();
-                              } on Exception catch (e) {
-                                print(e);
-                              }
-                            }
-                          },
-                          child: Text(
-                            "Sign In",
-                            style:
-                                getMediumTextStyle(lightColorScheme.onPrimary),
-                          ),
                         ),
+                        ElevatedButtonSignInWithEmailAndPassword(
+                            formkey: formkey, controller: controller),
                       ],
                     ),
                   ),
+                ),
+                Divider(
+                  thickness: 2,
+                  color: Colors.black,
                 ),
                 SizedBox(
-                  height: 50,
+                  height: MediaQuery.sizeOf(context).height * .05,
                 ),
-                Container(
-                  height: MediaQuery.sizeOf(context).height * .1,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1,
-                      color: lightColorScheme.primary,
-                    ),
-                    color: lightColorScheme.onPrimary,
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      controller.googleSignInFun();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                ImageAssets.icons8_Google_2image,
-                              ),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Text("sign in with Google"),
-                      ],
-                    ),
-                  ),
-                ),
+                ElevatedButtonSignInWithGoogle(controller: controller),
               ],
             ),
           ),
         ),
       ),
+      // ),
     );
   }
 }
