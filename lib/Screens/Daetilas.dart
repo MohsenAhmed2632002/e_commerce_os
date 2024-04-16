@@ -1,11 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:e_commerce_os/Models/CartProdectModel.dart';
 import 'package:e_commerce_os/Models/ProdectModel.dart';
 import 'package:e_commerce_os/ViewModel/DBViewModel.dart';
-import 'package:e_commerce_os/Widgets.dart';
-import 'package:e_commerce_os/core/Constans/Colors.dart';
-import 'package:e_commerce_os/core/Constans/Font.dart';
+import 'package:e_commerce_os/Screens/Widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

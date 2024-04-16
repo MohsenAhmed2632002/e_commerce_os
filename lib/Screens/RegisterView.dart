@@ -1,9 +1,7 @@
 import 'package:e_commerce_os/ViewModel/Auth_ViewModel.dart';
-import 'package:e_commerce_os/ViewModel/ControllerView.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 // ignore: must_be_immutable
@@ -44,6 +42,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           if (value == null || value.isEmpty) {
                             return "Enter Your Name";
                           }
+                          return null;
                         },
                         onChanged: (value) {
                           controller.name = value;
@@ -68,6 +67,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           if (value == null || value.isEmpty) {
                             return "Enter Your Email";
                           }
+                          return null;
                         },
                         onChanged: (value) {
                           controller.email = value;
@@ -92,6 +92,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           if (value == null || value.isEmpty) {
                             return "Enter Your PassWord";
                           }
+                          return null;
                         },
                         onChanged: (value) {
                           controller.password = value;
@@ -121,7 +122,8 @@ class RegisterView extends GetWidget<AuthViewModel> {
                       SizedBox(
                         height: 20,
                       ),
-                      ElevatedButtonsignUpWithEmailAndPassword(formkey: formkey, controller: controller),
+                      ElevatedButtonsignUpWithEmailAndPassword(
+                          formkey: formkey, controller: controller),
                     ],
                   ),
                 ),
@@ -163,7 +165,6 @@ class ElevatedButtonsignUpWithEmailAndPassword extends StatelessWidget {
         if (formkey.currentState!.validate()) {
           try {
             controller.signUpWithEmailAndPassword();
-           
           } on Exception catch (e) {
             print(e);
           }

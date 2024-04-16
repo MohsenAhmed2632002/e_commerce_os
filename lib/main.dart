@@ -6,21 +6,12 @@ import 'package:e_commerce_os/core/utils/binding.dart';
 import 'package:e_commerce_os/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(CartProductModelAdapter());
-
-  await Hive.openBox<List<CartProductModel>>("CartBox");
-
-  Get.put(CashData());
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await BeforeRunApp();
 
   runApp(const MyApp());
 }
@@ -39,11 +30,27 @@ class MyApp extends StatelessWidget {
   }
 }
 //TODO:
-//اللون اللي زي الثيم دا  
-// جوجججل واللي منها    
-// صفحة الخروج و البيانات 
-// المسح ف صفحة الصندوق 
-// 
-// 
-// 
-// 
+//اللون اللي زي الثيم دا
+// جوجججل واللي منها
+// صفحة الخروج و البيانات
+// المسح ف صفحة الصندوق
+//
+//
+//
+//
+
+Future<void> BeforeRunApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey =
+      "pk_test_51P5NxpRvDErjFj2ZbWmCKc8ytmzyK9kRNgb9zHQKJSzRtfKDIf42bxFsV7w4KPPluoCE1zxkefEVUdJsyHpkC3zL00Sprh2Kht";
+  await Hive.initFlutter();
+  Hive.registerAdapter(CartProductModelAdapter());
+
+  await Hive.openBox<List<CartProductModel>>("CartBox");
+
+  Get.put(CashData());
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+}

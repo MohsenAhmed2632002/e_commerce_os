@@ -1,4 +1,3 @@
-
 // ignore_for_file: unnecessary_null_comparison
 
 class UserModel {
@@ -8,12 +7,11 @@ class UserModel {
   late String pic;
 
   UserModel({
-   required this.name,
-   required  this.email,
-   required  this.userId,
-   required  this.pic,}
-     
-  );
+    required this.name,
+    required this.email,
+    required this.userId,
+    required this.pic,
+  });
 
   UserModel.fromJson(Map<String, dynamic> map) {
     if (map == null) {

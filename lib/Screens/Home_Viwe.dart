@@ -1,5 +1,5 @@
 import 'package:e_commerce_os/ViewModel/Home_View_model.dart';
-import 'package:e_commerce_os/Widgets.dart';
+import 'package:e_commerce_os/Screens/Widgets.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,7 @@
 import 'package:e_commerce_os/ViewModel/Auth_ViewModel.dart';
 import 'package:e_commerce_os/Screens/LoginScreen.dart';
 import 'package:e_commerce_os/ViewModel/Controller_ViewModle.dart';
-import 'package:e_commerce_os/Widgets.dart';
+import 'package:e_commerce_os/Screens/Widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

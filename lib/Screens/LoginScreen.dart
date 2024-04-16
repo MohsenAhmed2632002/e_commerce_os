@@ -1,6 +1,6 @@
 import 'package:e_commerce_os/ViewModel/Auth_ViewModel.dart';
 import 'package:e_commerce_os/Screens/RegisterView.dart';
-import 'package:e_commerce_os/Widgets.dart';
+import 'package:e_commerce_os/Screens/Widgets.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,6 +68,7 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                             if (value == null || value.isEmpty) {
                               return "Enter Your Email";
                             }
+                            return null;
                           },
                           onChanged: (value) {
                             controller.email = value;
@@ -86,6 +87,7 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                             if (value == null || value.isEmpty) {
                               return "Enter Your PassWord";
                             }
+                            return null;
                           },
                           onChanged: (value) {
                             controller.password = value;

@@ -1,5 +1,5 @@
 import 'package:e_commerce_os/ViewModel/PaymantDaetilas.dart';
-import 'package:e_commerce_os/Widgets.dart';
+import 'package:e_commerce_os/Screens/Widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,12 +27,16 @@ class PaymantDaetilasViewBody extends GetWidget<PaymantDaetilasViewModel> {
                     GetBuilderTwoWaysToPay(
                       controller: controller,
                     ),
-                    GetBuilderCreditCardWidget(
-                      controller: controller,
-                    ),
-                    GetBuilderCreditCardForm(
-                      controller: controller,
-                    ),
+                    controller.activeIndex == 1
+                        ? GetBuilderCreditCardWidget(
+                            controller: controller,
+                          )
+                        : SizedBox(),
+                    controller.activeIndex == 1
+                        ? GetBuilderCreditCardForm(
+                            controller: controller,
+                          )
+                        : SizedBox(),
                     GetBuilderElevatedButton(
                       controller: controller,
                     ),

@@ -34,7 +34,6 @@ class CartProductModel {
 
   Map<String, dynamic> toJson() => _$CartProductModelToJson(this);
 
-
   List<Object?> get props => [
         name,
         image,

@@ -36,7 +36,7 @@ class CashData extends GetxController {
   List<CartProductModel>? getCartList() {
     // List<CartProductModel> cartItems = cartBox.get("CartBox", defaultValue: [])
     //?.map((item) => CartProductModel.fromJson(item)).toList() ?? [];
-    return Hive.box <List<CartProductModel>>(
+    return Hive.box<List<CartProductModel>>(
       "CartBox",
     )
         .get(
