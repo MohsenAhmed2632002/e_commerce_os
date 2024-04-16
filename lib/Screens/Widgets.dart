@@ -2,7 +2,6 @@ import 'package:e_commerce_os/Models/CartProdectModel.dart';
 import 'package:e_commerce_os/Models/ProdectModel.dart';
 import 'package:e_commerce_os/Screens/Daetilas.dart';
 import 'package:e_commerce_os/Screens/LoginScreen.dart';
-import 'package:e_commerce_os/Screens/ThanksViwe.dart';
 import 'package:e_commerce_os/ViewModel/Auth_ViewModel.dart';
 import 'package:e_commerce_os/core/Constans/Colors.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
@@ -269,44 +268,46 @@ class GetBuilderCreditCardForm extends StatelessWidget {
   }
 }
 
-class GetBuilderElevatedButton extends StatelessWidget {
-  const GetBuilderElevatedButton({
-    super.key,
-    required this.controller,
-  });
-  final controller;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        minimumSize: MaterialStatePropertyAll<Size>(
-          Size(
-            MediaQuery.sizeOf(context).width * .7,
-            MediaQuery.sizeOf(context).height * .05,
-          ),
-        ),
-        backgroundColor: MaterialStatePropertyAll(
-          Color.fromARGB(255, 255, 234, 0),
-        ),
-      ),
-      onPressed: () {
-        if (controller.formKey.currentState!.validate()) {
-          controller.formKey.currentState!.save();
-          Get.to(
-            () => ThanksViwe(),
-            transition: Transition.fadeIn,
-          );
-        } else {
-          controller.changeAutoValidateMode();
-        }
-      },
-      child: Text(
-        "Cheek Out",
-        style: getMediumTextStyle(Colors.black),
-      ),
-    );
-  }
-}
+// class GetBuilderElevatedButton extends StatelessWidget {
+//   const GetBuilderElevatedButton({
+//     super.key,
+//     required this.controller,
+//   });
+//   final controller;
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(
+//       style: ButtonStyle(
+//         minimumSize: MaterialStatePropertyAll<Size>(
+//           Size(
+//             MediaQuery.sizeOf(context).width * .7,
+//             MediaQuery.sizeOf(context).height * .05,
+//           ),
+//         ),
+//         backgroundColor: MaterialStatePropertyAll(
+//           Color.fromARGB(255, 255, 234, 0),
+//         ),
+//       ),
+//       onPressed: () {
+//         if (controller.formKey.currentState!.validate()) {
+//           controller.formKey.currentState!.save();
+
+//           controller.makePayment();
+//           Get.to(
+//             () => ThanksViwe(),
+//             transition: Transition.fadeIn,
+//           );
+//         } else {
+//           controller.changeAutoValidateMode();
+//         }
+//       },
+//       child: Text(
+//         "Cheek Out",
+//         style: getMediumTextStyle(Colors.black),
+//       ),
+//     );
+//   }
+// }
 
 class WayPayMant extends StatelessWidget {
   const WayPayMant({
