@@ -1,7 +1,9 @@
 import 'package:e_commerce_os/Models/CartProdectModel.dart';
 import 'package:e_commerce_os/Models/ProdectModel.dart';
+import 'package:e_commerce_os/Models/payment_intent_input_model.dart';
 import 'package:e_commerce_os/Screens/Daetilas.dart';
 import 'package:e_commerce_os/Screens/LoginScreen.dart';
+import 'package:e_commerce_os/Screens/ThanksViwe.dart';
 import 'package:e_commerce_os/ViewModel/Auth_ViewModel.dart';
 import 'package:e_commerce_os/core/Constans/Colors.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
@@ -67,24 +69,26 @@ class CircaleAvatarToShowPic extends StatelessWidget {
   final controller;
   @override
   Widget build(BuildContext context) {
-    return Stack(clipBehavior: Clip.none, children: [
-      CircleAvatar(
-        radius: 100,
-        backgroundColor: ColorManager.primary,
-        child: CircleAvatar(
-          child:
-              // controller.userModel.pic.isNull // == null
-              Image.network(
-                  fit: BoxFit.contain,
-                  "https://firebasestorage.googleapis.com/v0/b/ecommerc-og.appspot.com/o/Image.png?alt=media&token=ee8ca2d6-bdbf-485e-bb59-78604372cba8")
-          // :
-          //  Image.network(controller.userModel.pic),
-          ,
-          radius: 90,
-          backgroundColor: Colors.white,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        CircleAvatar(
+          radius: 100,
+          backgroundColor: ColorManager.primary,
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(
+                  "https://firebasestorage.googleapis.com/v0/b/ecommerc-og.appspot.com/o/Image.png?alt=media&token=ee8ca2d6-bdbf-485e-bb59-78604372cba8",
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 }
 
@@ -101,46 +105,151 @@ class ContainerToShowDaetilasUserModel extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
-              "E-mail: ",
-              style: getBoldTextStyle(
-                Colors.black,
+          Container(
+            height: MediaQuery.sizeOf(context).height * .07,
+            width: MediaQuery.sizeOf(context).width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.lightPrimary.withOpacity(.4),
+                  Colors.white,
+                ],
               ),
             ),
-            Text(
-              "${controller.userModel.email}",
-              style: getBoldTextStyle(
-                Colors.black,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "E-mail: ",
+                  style: getBoldTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
+                ),
+                Text(
+                  "${controller.userModel.email}",
+                  style: getBoldTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: MediaQuery.sizeOf(context).height * .07,
+            width: MediaQuery.sizeOf(context).width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.lightPrimary.withOpacity(.4),
+                  Colors.white,
+                ],
               ),
             ),
-          ]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Name: ",
-                style: getBoldTextStyle(Colors.black, fontSize: 18),
-              ),
-              Text(
-                "${controller.userModel.name}",
-                style: getBoldTextStyle(Colors.black, fontSize: 18),
-              ),
-            ],
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Name: ",
+                  style: getBoldTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
+                ),
+                Text(
+                  "${controller.userModel.name}",
+                  style: getBoldTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
+                ),
+              ],
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "UserId: ",
-                style: getBoldTextStyle(Colors.black, fontSize: 18),
+          Container(
+            height: MediaQuery.sizeOf(context).height * .07,
+            width: MediaQuery.sizeOf(context).width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.primary,
+                  ColorManager.lightPrimary.withOpacity(.4),
+                  Colors.white,
+                ],
               ),
-              Text(
-                "${controller.userModel.userId}",
-                style: getBoldTextStyle(Colors.black, fontSize: 18),
-              ),
-            ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "UserId: ",
+                  style: getBoldTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
+                ),
+                Text(
+                  "${controller.userModel.userId}",
+                  style: getBoldTextStyle(
+                    fontSize: 15,
+                    Colors.black,
+                    context: context,
+                  ),
+                ),
+              ],
+            ),
           ),
+          // Container(
+          //   height: MediaQuery.sizeOf(context).height * .07,
+          //   width: MediaQuery.sizeOf(context).width,
+          //   decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //       colors: [
+          //         ColorManager.primary,
+          //         ColorManager.primary,
+          //         ColorManager.primary,
+          //         ColorManager.primary,
+          //         ColorManager.lightPrimary.withOpacity(.4),
+          //         Colors.white,
+          //       ],
+          //     ),
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         "Pic: ",
+          //         style: getBoldTextStyle(
+          //           Colors.black,
+          //           fontSize: 20,
+          //         ),
+          //       ),
+          //       Container(
+          //         height: 200,
+          //         width: 200,
+          //         // child: Image.network(
+          //           // "${controller.userModel.pic}",
+          //           // style: getBoldTextStyle(
+          //           //   Colors.black,
+          //           //   fontSize: 18,
+          //           // ),
+          //         // ),
+          // ),
+          // ],
+          // ),
+          // ),
         ],
       ),
     );
@@ -182,7 +291,10 @@ class ElevatedButtonsignOut extends StatelessWidget {
       ),
       label: Text(
         "signOut",
-        style: getMediumTextStyle(Colors.black),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }
@@ -386,7 +498,10 @@ class ElevatedButtonSignInWithEmailAndPassword extends StatelessWidget {
       },
       child: Text(
         "Sign In",
-        style: getMediumTextStyle(Colors.black),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }
@@ -418,7 +533,10 @@ class ElevatedButtonSignInWithGoogle extends StatelessWidget {
       },
       child: Text(
         "sign in with Google",
-        style: getMediumTextStyle(Colors.black),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }
@@ -454,7 +572,10 @@ class ContainerOfCategoiesInApp extends StatelessWidget {
                   ]),
                   Text(
                     "${controller.categoryModel[index].name}",
-                    style: getRegulerTextStyle(Colors.black),
+                    style: getRegulerTextStyle(
+                      Colors.black,
+                      context: context,
+                    ),
                   ),
                 ]),
           );
@@ -538,7 +659,10 @@ class ContainerOfItemsInApp extends StatelessWidget {
                       ),
                       Text(
                         "${controller.productModel[index].name}",
-                        style: getLightTextStyle(Colors.black, fontSize: 18),
+                        style: getLightTextStyle(
+                          Colors.black,
+                          context: context,
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -546,12 +670,17 @@ class ContainerOfItemsInApp extends StatelessWidget {
                           Text(
                             r"$"
                             "${controller.productModel[index].price}",
-                            style:
-                                getLightTextStyle(Colors.black, fontSize: 18),
+                            style: getLightTextStyle(
+                              Colors.black,
+                              context: context,
+                            ),
                           ),
                           IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.heart_broken_outlined))
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.whatshot_outlined,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -597,7 +726,10 @@ class ContainerOfAllDe extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 "${model.name}",
-                style: getBoldTextStyle(Colors.black, fontSize: 30),
+                style: getBoldTextStyle(
+                  Colors.black,
+                  context: context,
+                ),
               ),
             ),
             Column(
@@ -605,11 +737,17 @@ class ContainerOfAllDe extends StatelessWidget {
               children: [
                 Text(
                   "price",
-                  style: getBoldTextStyle(Colors.black, fontSize: 22),
+                  style: getBoldTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
                 ),
                 Text(
                   "${model.price}",
-                  style: getMediumTextStyle(Colors.black, fontSize: 22),
+                  style: getMediumTextStyle(
+                    Colors.black,
+                    context: context,
+                  ),
                 ),
               ],
             ),
@@ -632,11 +770,17 @@ class ContainerOfAllDe extends StatelessWidget {
                     children: [
                       Text(
                         "Color:",
-                        style: getBoldTextStyle(Colors.black),
+                        style: getBoldTextStyle(
+                          Colors.black,
+                          context: context,
+                        ),
                       ),
                       Text(
                         "${model.color}",
-                        style: getMediumTextStyle(Colors.black),
+                        style: getMediumTextStyle(
+                          Colors.black,
+                          context: context,
+                        ),
                       ),
                     ],
                   ),
@@ -657,11 +801,17 @@ class ContainerOfAllDe extends StatelessWidget {
                     children: [
                       Text(
                         "Size",
-                        style: getBoldTextStyle(Colors.black),
+                        style: getBoldTextStyle(
+                          Colors.black,
+                          context: context,
+                        ),
                       ),
                       Text(
                         "${model.size}",
-                        style: getMediumTextStyle(Colors.black),
+                        style: getMediumTextStyle(
+                          Colors.black,
+                          context: context,
+                        ),
                       ),
                     ],
                   ),
@@ -674,11 +824,17 @@ class ContainerOfAllDe extends StatelessWidget {
                 children: [
                   Text(
                     "Details",
-                    style: getBoldTextStyle(Colors.black),
+                    style: getBoldTextStyle(
+                      Colors.black,
+                      context: context,
+                    ),
                   ),
                   Text(
                     "${model.details}",
-                    style: getMediumTextStyle(Colors.black, fontSize: 16),
+                    style: getMediumTextStyle(
+                      Colors.black,
+                      context: context,
+                    ),
                   ),
                 ],
               ),
@@ -767,7 +923,10 @@ class ElevatedButtonSaveDataLocal extends StatelessWidget {
       },
       child: Text(
         "Add To Card",
-        style: getMediumTextStyle(Colors.black, fontSize: 16),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }
@@ -803,7 +962,10 @@ class ElevatedButtonIncrease extends StatelessWidget {
       },
       child: Text(
         "+",
-        style: getMediumTextStyle(Colors.black),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }
@@ -839,7 +1001,10 @@ class ElevatedButtonDecrease extends StatelessWidget {
       },
       child: Text(
         "-",
-        style: getMediumTextStyle(Colors.black),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }
@@ -863,6 +1028,127 @@ class HeroPic extends StatelessWidget {
         child: Image.network(
           fit: BoxFit.cover,
           model.image,
+        ),
+      ),
+    );
+  }
+}
+
+// class ElevatedButtonToPayWithCredtCard extends StatelessWidget {
+//   const ElevatedButtonToPayWithCredtCard({
+//     super.key,
+//     required this.controller,
+//   });
+//   final controller;
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(
+//       style: ButtonStyle(
+//         minimumSize: MaterialStatePropertyAll<Size>(
+//           Size(
+//             MediaQuery.sizeOf(context).width * .7,
+//             MediaQuery.sizeOf(context).height * .05,
+//           ),
+//         ),
+//         backgroundColor: MaterialStatePropertyAll(
+//           Color.fromARGB(255, 255, 234, 0),
+//         ),
+//       ),
+//       onPressed: () {
+//         if (controller.activeIndex == 1) {
+//           // if (controller.formKey.currentState!.validate()) {
+//           // controller.formKey.currentState!.save();
+//           controller
+//               .makePayment(
+//             paymentIntentInputModel: PaymentIntentInputModel(
+//               amount: "${controller.finalPrice}00",
+//               currency: "USD",
+//             ),
+//           )
+//               .then((value) {
+//             controller.clearAllThingsAfterPaymentSuccess();
+//             Get.to(
+//               () => ThanksViwe(),
+//               transition: Transition.fadeIn,
+//             );
+//           });
+//         } else if (controller.activeIndex == 0) {
+//           controller.makePaymentWithPaypal(context: context);
+//           print(controller.activeIndex);
+//         } else {
+//           controller.changeAutoValidateMode();
+//           // }
+//         }
+//       },
+//       child: Text(
+//         "Pay Now With Credit Card",
+//         style: getMediumTextStyle(
+//           Colors.black,
+//           context: context,
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class ElevatedButtonToPay extends StatelessWidget {
+  const ElevatedButtonToPay({
+    super.key,
+    required this.controller,
+  });
+  final controller;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        minimumSize: MaterialStatePropertyAll<Size>(
+          Size(
+            MediaQuery.sizeOf(context).width * .7,
+            MediaQuery.sizeOf(context).height * .05,
+          ),
+        ),
+        backgroundColor: MaterialStatePropertyAll(
+          Color.fromARGB(255, 255, 234, 0),
+        ),
+      ),
+      onPressed: () {
+        if (controller.activeIndex == 1) {
+          // controller
+          //     .makePayment(
+          //   paymentIntentInputModel: PaymentIntentInputModel(
+          //     amount: "${controller.finalPrice}00",
+          //     currency: "USD",
+          //   ),
+          // )
+          controller
+              .makePayment(
+            paymentIntentInputModel: PaymentIntentInputModel(
+              amount: "${controller.finalPrice}00",
+              currency: "USD",
+            ),
+          )
+              .then((value) {
+            controller.clearAllThingsAfterPaymentSuccess();
+            Get.to(
+              () => ThanksViwe(),
+              transition: Transition.fadeIn,
+            );
+          });
+        } else if (controller.activeIndex == 0) {
+          controller.makePaymentWithPaypal(context: context);
+          controller.clearAllThingsAfterPaymentSuccess();
+        } else {
+          controller.changeAutoValidateMode();
+          // }
+        }
+      },
+      child: Text(
+        controller.activeIndex == 0
+            ? "Pay Now With PayPal"
+            : "Pay Now With Credit Card",
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
         ),
       ),
     );

@@ -77,7 +77,7 @@ class ThanksViwe extends StatelessWidget {
                   right: 12,
                   child: Text(
                     "Your transaction was successful",
-                    style: getBoldTextStyle(Colors.black, fontSize: 18),
+                    style: getBoldTextStyle(Colors.black, context: context),
                   ),
                 ),
               ],

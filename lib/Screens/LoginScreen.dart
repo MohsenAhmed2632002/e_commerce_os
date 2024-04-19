@@ -40,8 +40,10 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                           children: [
                             Text(
                               "welecome",
-                              style:
-                                  getBoldTextStyle(Colors.black, fontSize: 30),
+                              style: getBoldTextStyle(
+                                Colors.black,
+                                context: context,
+                              ),
                             ),
                             InkWell(
                               onTap: () {
@@ -49,8 +51,10 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                               },
                               child: Text(
                                 "Sign Up",
-                                style: getBoldTextStyle(Colors.black,
-                                    fontSize: 16),
+                                style: getBoldTextStyle(
+                                  Colors.black,
+                                  context: context,
+                                ),
                               ),
                             )
                           ],
@@ -60,7 +64,14 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                           child: Text(
                             "Sign In To Cotinue",
                             style: getRegulerTextStyle(
-                                const Color.fromARGB(255, 123, 122, 122)),
+                              context: context,
+                              const Color.fromARGB(
+                                255,
+                                123,
+                                122,
+                                122,
+                              ),
+                            ),
                           ),
                         ),
                         TextFormField(
@@ -107,7 +118,10 @@ class LoginViwe extends GetWidget<AuthViewModel> {
                             onPressed: () {},
                             child: Text(
                               "Forget The Pass?",
-                              style: getRegulerTextStyle(Colors.black87),
+                              style: getRegulerTextStyle(
+                                Colors.black87,
+                                context: context,
+                              ),
                             ),
                           ),
                         ),

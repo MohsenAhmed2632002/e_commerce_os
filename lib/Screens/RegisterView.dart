@@ -11,6 +11,9 @@ class RegisterView extends GetWidget<AuthViewModel> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Sign Up"),
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -31,7 +34,10 @@ class RegisterView extends GetWidget<AuthViewModel> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "Sign Up",
-                          style: getBoldTextStyle(Colors.black, fontSize: 24),
+                          style: getBoldTextStyle(
+                            Colors.black,
+                            context: context,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -55,7 +61,10 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           ),
                           label: Text(
                             "Name",
-                            style: getRegulerTextStyle(Colors.black),
+                            style: getRegulerTextStyle(
+                              Colors.black,
+                              context: context,
+                            ),
                           ),
                         ),
                       ),
@@ -80,7 +89,10 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           ),
                           label: Text(
                             "E-mail",
-                            style: getRegulerTextStyle(Colors.black),
+                            style: getRegulerTextStyle(
+                              Colors.black,
+                              context: context,
+                            ),
                           ),
                         ),
                       ),
@@ -105,7 +117,10 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           ),
                           label: Text(
                             "PassWord",
-                            style: getRegulerTextStyle(Colors.black),
+                            style: getRegulerTextStyle(
+                              Colors.black,
+                              context: context,
+                            ),
                           ),
                         ),
                       ),
@@ -115,7 +130,10 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           onPressed: () {},
                           child: Text(
                             "Forget The Pass?",
-                            style: getRegulerTextStyle(Colors.black87),
+                            style: getRegulerTextStyle(
+                              Colors.black87,
+                              context: context,
+                            ),
                           ),
                         ),
                       ),
@@ -172,7 +190,10 @@ class ElevatedButtonsignUpWithEmailAndPassword extends StatelessWidget {
       },
       child: Text(
         "Sign Up",
-        style: getMediumTextStyle(Colors.black),
+        style: getMediumTextStyle(
+          Colors.black,
+          context: context,
+        ),
       ),
     );
   }

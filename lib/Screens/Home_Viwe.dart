@@ -44,11 +44,17 @@ class HomeView extends GetWidget<HomeViewModel> {
                       children: [
                         Text(
                           "New Arrival",
-                          style: getBoldTextStyle(Colors.black),
+                          style: getBoldTextStyle(
+                            Colors.black,
+                            context: context,
+                          ),
                         ),
                         Text(
                           "See All",
-                          style: getMediumTextStyle(Colors.black),
+                          style: getMediumTextStyle(
+                            Colors.black,
+                            context: context,
+                          ),
                         ),
                       ],
                     ),
@@ -58,11 +64,17 @@ class HomeView extends GetWidget<HomeViewModel> {
                       children: [
                         Text(
                           "Best Selling",
-                          style: getBoldTextStyle(Colors.black, fontSize: 20),
+                          style: getBoldTextStyle(
+                            Colors.black,
+                            context: context,
+                          ),
                         ),
                         Text(
                           "See All",
-                          style: getMediumTextStyle(Colors.black, fontSize: 18),
+                          style: getMediumTextStyle(
+                            Colors.black,
+                            context: context,
+                          ),
                         ),
                       ],
                     ),

@@ -1,6 +1,6 @@
 import 'package:e_commerce_os/Models/CartProdectModel.dart';
 import 'package:e_commerce_os/ViewModel/ControllerView.dart';
-import 'package:e_commerce_os/ViewModel/DBViewModel.dart';
+import 'package:e_commerce_os/ViewModel/DBViewModel_And_Payment.dart';
 import 'package:e_commerce_os/core/Constans/theme.dart';
 import 'package:e_commerce_os/core/utils/binding.dart';
 import 'package:e_commerce_os/firebase_options.dart';
@@ -9,10 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import "package:device_preview/device_preview.dart";
 
 Future main() async {
   await BeforeRunApp();
-
+  // DevicePreview(
+  //   enabled: true,
+  //   builder: (context) => MyApp(),
+  // );
   runApp(const MyApp());
 }
 
@@ -25,19 +29,10 @@ class MyApp extends StatelessWidget {
       initialBinding: Binding(),
       home: ControllerView(),
       debugShowCheckedModeBanner: false,
-      theme: getAppTheme(),
+      theme: getAppTheme(context: context),
     );
   }
 }
-//TODO:
-//اللون اللي زي الثيم دا
-// جوجججل واللي منها
-// صفحة الخروج و البيانات
-// المسح ف صفحة الصندوق
-//
-//
-//
-//
 
 Future<void> BeforeRunApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,7 +43,7 @@ Future<void> BeforeRunApp() async {
 
   await Hive.openBox<List<CartProductModel>>("CartBox");
 
-  Get.put(CashData());
+  Get.put(CashDataAndPayment());
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

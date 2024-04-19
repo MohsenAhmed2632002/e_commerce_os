@@ -1,12 +1,12 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:e_commerce_os/Models/ProdectModel.dart';
-import 'package:e_commerce_os/ViewModel/DBViewModel.dart';
+import 'package:e_commerce_os/ViewModel/DBViewModel_And_Payment.dart';
 import 'package:e_commerce_os/Screens/Widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Daetilas extends GetWidget<CashData> {
+class Daetilas extends GetWidget<CashDataAndPayment> {
   ProductModel model;
   Daetilas({required this.model});
 
@@ -14,8 +14,8 @@ class Daetilas extends GetWidget<CashData> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(246, 246, 246, 1),
-      body: GetBuilder<CashData>(
-          init: Get.put(CashData()),
+      body: GetBuilder<CashDataAndPayment>(
+          init: Get.put(CashDataAndPayment()),
           builder: (controller) {
             return Column(
               children: [

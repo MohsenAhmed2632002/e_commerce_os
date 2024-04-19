@@ -12,7 +12,9 @@ class ControllerView extends GetWidget<AuthViewModel> {
       return (Get.put(AuthViewModel()).user == null)
           ? LoginViwe()
           : GetBuilder<ControllerViewModel>(
-              init: Get.put(ControllerViewModel()),
+              init: Get.put(
+                ControllerViewModel(),
+              ),
               builder: (controller) {
                 return HasSignedIn();
               },

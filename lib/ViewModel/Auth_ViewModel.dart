@@ -52,7 +52,10 @@ class AuthViewModel extends GetxController {
   void signInWithEmailAndPassword() async {
     try {
       await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
+          .signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      )
           .then((value) async {
         await FireSoterUser().getCurrentUser(value.user!.uid).then((value) =>
             setUser(UserModel.fromJson(value.data() as Map<String, dynamic>)));
@@ -80,17 +83,22 @@ class AuthViewModel extends GetxController {
   void signUpWithEmailAndPassword() async {
     try {
       await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
+          .createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      )
           .then((myUser) async {
         await saveUser(myUser);
       });
-      Get.showSnackbar(GetSnackBar(
-        backgroundColor: Colors.green,
-        duration: Duration(seconds: 2),
-        animationDuration: Duration(seconds: 2),
-        title: email.toString(),
-        message: password.toString(),
-      ));
+      Get.showSnackbar(
+        GetSnackBar(
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+          animationDuration: Duration(seconds: 2),
+          title: email.toString(),
+          message: password.toString(),
+        ),
+      );
       Get.offAll(ControllerView());
     } catch (e) {
       Get.showSnackbar(GetSnackBar(
@@ -100,7 +108,6 @@ class AuthViewModel extends GetxController {
         title: e.toString(),
         message: e.toString(),
       ));
-      print(e);
     }
   }
 

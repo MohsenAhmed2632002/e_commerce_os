@@ -5,15 +5,20 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileViewModel extends GetxController {
+  final LocalUserData localUserData = Get.find();
+  UserModel get userModel => _userModel;
+  UserModel _userModel = UserModel(
+    email: "",
+    name: "",
+    pic: "",
+    userId: "",
+  ); // تهيئة _userModel بقيمة افتراضية null
+
   @override
   void onInit() {
     super.onInit();
-    getCurrentUSer();
+    getCurrentUser();
   }
-
-  final LocalUserData localUserData = Get.find();
-  UserModel get userModel => _userModel;
-  late UserModel _userModel;
 
   Future signOut() async {
     GoogleSignIn().signOut();
@@ -21,11 +26,8 @@ class ProfileViewModel extends GetxController {
     localUserData.deleteUser();
   }
 
-  Future getCurrentUSer() async {
-    // await LocalUserData().getUser.then(
-    // (value) => _userModel = value!,
-    // );
-    _userModel = (await LocalUserData().getUser)!;
+  Future<void> getCurrentUser() async {
+    _userModel = (await localUserData.getUser)!;
     update();
   }
 }

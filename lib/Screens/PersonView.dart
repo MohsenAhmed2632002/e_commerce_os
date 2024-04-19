@@ -8,17 +8,20 @@ class PersonView extends GetWidget<ProfileViewModel> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<ProfileViewModel>(
-          init: Get.put(ProfileViewModel()),
+          init: Get.put(
+            ProfileViewModel(),
+          ),
+          initState: (state) => controller.getCurrentUser(),
           builder: (controller) {
             return Container(
               height: MediaQuery.sizeOf(context).height,
               width: MediaQuery.sizeOf(context).width,
               padding: EdgeInsets.symmetric(
                 vertical: MediaQuery.sizeOf(context).height * .05,
-                horizontal: 10,
+                horizontal: 5,
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircaleAvatarToShowPic(
