@@ -1,6 +1,8 @@
+import 'package:e_commerce_os/ViewModel/ControllerView.dart';
 import 'package:e_commerce_os/core/Constans/Colors.dart';
 import 'package:e_commerce_os/core/Constans/Font.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ThanksViwe extends StatelessWidget {
   const ThanksViwe({super.key});
@@ -8,7 +10,16 @@ class ThanksViwe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.offAll(ControllerView());
+          },
+          icon: Icon(
+            Icons.arrow_back_rounded,
+          ),
+        ),
+      ),
       body: Container(
         // color: ColorManager.primary,
         height: MediaQuery.sizeOf(context).height,

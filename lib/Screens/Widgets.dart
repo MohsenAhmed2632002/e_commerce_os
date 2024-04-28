@@ -203,7 +203,7 @@ class ContainerToShowDaetilasUserModel extends StatelessWidget {
                 Text(
                   "${controller.userModel.userId}",
                   style: getBoldTextStyle(
-                    fontSize: 15,
+                    fontSize: 12,
                     Colors.black,
                     context: context,
                   ),
@@ -675,12 +675,6 @@ class ContainerOfItemsInApp extends StatelessWidget {
                               context: context,
                             ),
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.whatshot_outlined,
-                            ),
-                          ),
                         ],
                       ),
                     ],
@@ -1121,7 +1115,7 @@ class ElevatedButtonToPay extends StatelessWidget {
           //   ),
           // )
           controller
-              .makePayment(
+              .makePaymentWithCreditCard(
             paymentIntentInputModel: PaymentIntentInputModel(
               amount: "${controller.finalPrice}00",
               currency: "USD",

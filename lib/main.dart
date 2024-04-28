@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import "package:device_preview/device_preview.dart";
 
 Future main() async {
   await BeforeRunApp();

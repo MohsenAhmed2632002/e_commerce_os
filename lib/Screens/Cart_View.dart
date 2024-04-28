@@ -100,11 +100,19 @@ class CartView extends GetWidget<CashDataAndPayment> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                "name: ${controller.cartList[index].name}",
+                                                "name:",
                                                 style: getBoldTextStyle(
                                                   Colors.black,
                                                   context: context,
-                                                  fontSize: 15,
+                                                  // fontSize: 12,
+                                                ),
+                                              ),
+                                              Text(
+                                                "${controller.cartList[index].name}",
+                                                style: getBoldTextStyle(
+                                                  Colors.black,
+                                                  context: context,
+                                                  // fontSize: 12,
                                                 ),
                                               ),
                                               Text(
@@ -115,15 +123,15 @@ class CartView extends GetWidget<CashDataAndPayment> {
                                                 ),
                                               ),
                                               Text(
-                                                "price: ${controller.cartList[index].price}",
-                                                style: getMediumTextStyle(
+                                                "price  For One Item: ${controller.cartList[index].price}",
+                                                style: getLightTextStyle(
                                                   Colors.black,
                                                   context: context,
                                                 ),
                                               ),
                                               Text(
-                                                "price For One Item: ${controller.cartList[index].quan * controller.cartList[index].price}",
-                                                style: getLightTextStyle(
+                                                "Total price: ${controller.cartList[index].quan * controller.cartList[index].price}",
+                                                style: getMediumTextStyle(
                                                   context: context,
                                                   Colors.black,
                                                 ),
@@ -156,8 +164,8 @@ class CartView extends GetWidget<CashDataAndPayment> {
                         children: [
                           Text(
                             "Total:",
-                            style: getLightTextStyle(
-                              Colors.grey,
+                            style: getBoldTextStyle(
+                              Colors.black,
                               context: context,
                             ),
                           ),

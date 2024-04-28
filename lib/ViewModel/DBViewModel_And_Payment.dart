@@ -116,7 +116,7 @@ class CashDataAndPayment extends GetxController {
     }
   }
 
-  makePaymentWithPaypal({required BuildContext context}) {
+ makePaymentWithPaypal({required BuildContext context}) {
     var amount = AmountModel(
       currency: "USD",
       details: Details(
